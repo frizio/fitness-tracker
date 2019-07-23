@@ -1,5 +1,5 @@
 <section>
-    <form fxLayout="column" fxLayoutAlign="center center" 
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px"
           #userInfo="ngForm" (ngSubmit)="onSubmit(userInfo)">
         <mat-form-field>
             <input type="email"
@@ -15,9 +15,9 @@
                     matInput
                     placeholder="Your password" 
                     ngModel name="password" #pwInput="ngModel"
-                    required minlenght="6">
-            <mat-error>Has to be at least 6 bcharacter long.</mat-error>
+                    required minlength="6">
             <mat-hint align="end"> {{pwInput.value?.length}} / 6 </mat-hint>
+            <mat-error>Has to be at least 6 bcharacter long.</mat-error>
         </mat-form-field>
         <mat-form-field hintLabel="You must have at least 18 years old.">
             <input matInput
@@ -34,6 +34,9 @@
                       required>
             Agree to Terms and Conditions.
         </mat-checkbox>
-        <button type="submit" mat-raised-button color="primary">Submit</button>
+        <button type="submit" 
+                mat-raised-button 
+                color="primary"
+                [disabled]="userInfo.invalid">Submit</button>
     </form>
 </section>
