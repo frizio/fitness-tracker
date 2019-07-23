@@ -23,6 +23,8 @@
             <input matInput
                     placeholder="Your birthdate"
                     [matDatepicker]="birthPicker"   
+                    ngModel name="birthdate" 
+                    require
                     [max]="maxDate">
             <mat-datepicker-toggle matSuffix [for]="birthPicker"></mat-datepicker-toggle>
             <mat-datepicker #birthPicker></mat-datepicker>
