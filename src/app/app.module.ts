@@ -10,6 +10,8 @@ import { CurrentTrainingComponent } from './training/current-training/current-tr
 import { NewTrainingComponent } from './training/new-training/new-training.component';
 import { PastTrainingsComponent } from './training/past-trainings/past-trainings.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
     routingComponents,
     CurrentTrainingComponent,
     NewTrainingComponent,
-    PastTrainingsComponent
+    PastTrainingsComponent,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
