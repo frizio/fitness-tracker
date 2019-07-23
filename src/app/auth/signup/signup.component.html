@@ -27,6 +27,11 @@
             <mat-datepicker-toggle matSuffix [for]="birthPicker"></mat-datepicker-toggle>
             <mat-datepicker #birthPicker></mat-datepicker>
         </mat-form-field>
+        <mat-checkbox color="primary" 
+                      ngModel name="agree" 
+                      required>
+            Agree to Terms and Conditions.
+        </mat-checkbox>
         <button type="submit" mat-raised-button color="primary">Submit</button>
     </form>
 </section>
