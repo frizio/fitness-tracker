@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule, MatIconModule, MatInputModule, MatFormFieldModule,
          MatDatepickerModule, MatNativeDateModule, MatCheckboxModule,
          MatSidenavModule, MatToolbarModule, MatListModule,
-         MatTabsModule, 
-         MatCardModule,
+         MatTabsModule, MatCardModule,
          MatSelectModule} from '@angular/material';
 
 
