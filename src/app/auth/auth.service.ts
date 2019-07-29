@@ -35,6 +35,7 @@ export class AuthService {
   logout() {
     this.user = null;
     this.authChange.next(false);
+    this.router.navigate(['/login']);
   }
 
   getUser(): User {
