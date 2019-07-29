@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -8,14 +9,23 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
 
-  onLogin(data: NgForm) {
+  onLogin(form: NgForm) {
     console.log('Login user');
-    console.log(data);
+    console.log(form);
+    this.authService.login(
+      {
+        email: form.value.email,
+        password: form.value.password
+      }
+    );
+
   }
 
 }
