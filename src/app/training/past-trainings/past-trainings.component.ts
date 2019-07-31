@@ -12,6 +12,7 @@ export class PastTrainingsComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<Exercise>();
   displayedColumns = ['date', 'name', 'duration', 'calories', 'state'];
+
   @ViewChild(MatSort, {static: true})
   sort: MatSort;
 
@@ -26,6 +27,10 @@ export class PastTrainingsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
+  }
+
+  doFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
