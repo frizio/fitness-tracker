@@ -9,15 +9,12 @@ import { Subject, Observable } from 'rxjs';
 })
 export class TrainingService {
 
-  availableExercise: Exercise[] = [];
-  // Emit an event whenever receive esercises
-  exercisesChanged = new Subject<Exercise[]>();
-
-  private runningExercise: Exercise;
-
   exerciseChanged = new Subject<Exercise>();
-
-  exercises: Exercise[] = [];
+  exercisesChanged = new Subject<Exercise[]>();
+  
+  private availableExercise: Exercise[] = [];
+  private exercises: Exercise[] = [];
+  private runningExercise: Exercise;
 
 
   constructor(
@@ -90,7 +87,7 @@ export class TrainingService {
   }
 
   private addDataToDatabase(exercise: Exercise) {
-    this.db.collection('finiscedExercises').add(exercise);
+    this.db.collection('finishedExercises').add(exercise);
   }
 
 }
