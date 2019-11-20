@@ -9,11 +9,13 @@ import { Subject, Observable } from 'rxjs';
 })
 export class TrainingService {
 
+  private COLLECTION_NAME = 'finishedExercises';
+
   exerciseChanged = new Subject<Exercise>();
   exercisesChanged = new Subject<Exercise[]>();
+  finishedExercisesChanged = new Subject<Exercise[]>();
   
   private availableExercise: Exercise[] = [];
-  private exercises: Exercise[] = [];
   private runningExercise: Exercise;
 
 
@@ -82,12 +84,17 @@ export class TrainingService {
     return { ...this.runningExercise };
   }
 
-  getCompletedOrCanceledEsercises() {
-    return this.exercises.slice();
+  fetchCompletedOrCanceledEsercises() {
+    this.db.collection(this.COLLECTION_NAME).valueChanges()
+      .subscribe(
+        (exercises: Exercise[]) => {
+          this.finishedExercisesChanged.next(exercises);
+        }
+      );
   }
 
   private addDataToDatabase(exercise: Exercise) {
-    this.db.collection('finishedExercises').add(exercise);
+    this.db.collection(this.COLLECTION_NAME).add(exercise);
   }
 
 }
