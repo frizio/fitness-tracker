@@ -1,3 +1,4 @@
+import { TrainingService } from './../training/training.service';
 import { AuthData } from './auth-data.model';
 import { Injectable } from '@angular/core';
 import { User } from './user.model';
@@ -15,7 +16,8 @@ export class AuthService {
 
   constructor(
     private router: Router,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private trainingService: TrainingService
   ) { }
 
   registerUser(authData: AuthData) {
@@ -49,6 +51,8 @@ export class AuthService {
   }
 
   logout() {
+    this.trainingService.cancelSubscriptions();
+    this.afAuth.auth.signOut();
     this.isAuthenticated = false;
     this.authChange.next(false);
     this.router.navigate(['/login']);
