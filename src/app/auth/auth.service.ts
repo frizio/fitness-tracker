@@ -6,7 +6,6 @@ import { User } from './user.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { MatSnackBar } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,6 @@ export class AuthService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private trainingService: TrainingService,
-    private snackBar: MatSnackBar,
     private uiService: UiService
   ) { }
 
@@ -49,21 +47,13 @@ export class AuthService {
         result => {
           // console.log(result);
           this.uiService.loadingStateChanged.next(false);
-          this.snackBar.open(
-            'Registration successfully',
-            null, // a potential action
-            {duration: 3000}
-          );
+          this.uiService.showSnackBar('Registration successfully', null, 3000);
         }
       )
       .catch(
         error => {
           this.uiService.loadingStateChanged.next(false);
-          this.snackBar.open(
-            error.message,
-            null, // a potential action
-            {duration: 3000}
-          );
+          this.uiService.showSnackBar(error.message, null, 3000);
         }
       );
   }
@@ -75,21 +65,13 @@ export class AuthService {
         result => {
           // console.log(result);
           this.uiService.loadingStateChanged.next(false);
-          this.snackBar.open(
-            'Login successfully',
-            null, // a potential action
-            {duration: 3000}
-          );
+          this.uiService.showSnackBar('Login successfully', null, 3000);
         }
       )
       .catch(
         error => {
           this.uiService.loadingStateChanged.next(false);
-          this.snackBar.open(
-            error.message,
-            null, // a potential action
-            {duration: 3000}
-          );
+          this.uiService.showSnackBar(error.message, null, 3000);
         }
       );
   }
