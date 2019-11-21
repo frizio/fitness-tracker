@@ -1,3 +1,4 @@
+import { UiService } from './../shared/ui.service';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Exercise } from './exercise.model';
@@ -20,10 +21,12 @@ export class TrainingService {
   private firebaseSubscriptions: Subscription[] = [];
 
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private uiService: UiService
   ) { }
 
   fetchAvailableExercise() {
+    this.uiService.loadingStateChanged.next(true);
     this.firebaseSubscriptions.push(
       this.db.collection('availableExercises').snapshotChanges()
         .pipe(
@@ -42,11 +45,13 @@ export class TrainingService {
         )
         .subscribe(
           (exercises: Exercise[]) => {
+            this.uiService.loadingStateChanged.next(false);
             this.availableExercise = exercises;
             this.exercisesChanged.next([...this.availableExercise]);
           },
           error => {
-            console.log(error);
+            // console.log(error);
+            this.uiService.loadingStateChanged.next(false);
           }
         )
     );
