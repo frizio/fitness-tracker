@@ -17,11 +17,13 @@
                     ngModel name="password" #pwInput="ngModel"
                     required>
         </mat-form-field>
-        <button type="submit" 
+        <button *ngIf="!isLoading" 
+                type="submit" 
                 mat-raised-button 
                 color="primary"
                 [disabled]="loginInfo.invalid">
             Submit
         </button>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
     </form>
 </section>
