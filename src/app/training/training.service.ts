@@ -25,7 +25,7 @@ export class TrainingService {
     private uiService: UiService
   ) { }
 
-  fetchAvailableExercise() {
+  fetchAvailableExercises() {
     this.uiService.loadingStateChanged.next(true);
     this.firebaseSubscriptions.push(
       this.db.collection('availableExercises').snapshotChanges()
@@ -34,6 +34,7 @@ export class TrainingService {
             docArray => {
               return docArray.map(
                 doc => {
+                  // throw(new Error());
                   return {
                     id: doc.payload.doc.id,
                     ...doc.payload.doc.data()
@@ -52,6 +53,8 @@ export class TrainingService {
           error => {
             // console.log(error);
             this.uiService.loadingStateChanged.next(false);
+            this.uiService.showSnackBar('Fetching exercises failed', null, 3000);
+            this.exercisesChanged.next(null);
           }
         )
     );
