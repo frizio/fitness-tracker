@@ -2,6 +2,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -19,7 +21,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireAuthModule
   ],
   exports: []
 })
