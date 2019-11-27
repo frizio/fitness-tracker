@@ -1,3 +1,4 @@
+import { TrainingModule } from './training/training.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,25 +11,18 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
-import { CurrentTrainingComponent } from './training/current-training/current-training.component';
-import { NewTrainingComponent } from './training/new-training/new-training.component';
-import { PastTrainingsComponent } from './training/past-trainings/past-trainings.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { StopTrainingComponent } from './training/current-training/stop-training/stop-training.component';
+
 import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    CurrentTrainingComponent,
-    NewTrainingComponent,
-    PastTrainingsComponent,
     HeaderComponent,
-    SidenavListComponent,
-    StopTrainingComponent
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +34,10 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AuthModule
+    AuthModule,
+    TrainingModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [StopTrainingComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
