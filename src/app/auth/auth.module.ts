@@ -1,6 +1,6 @@
-import { SharedModule } from './../shared/shared.module';
+import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { SharedModule } from './../shared/shared.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { LoginComponent } from './login/login.component';
@@ -17,7 +17,8 @@ import { NgModule } from '@angular/core';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AuthRoutingModule
   ],
   exports: []
 })
