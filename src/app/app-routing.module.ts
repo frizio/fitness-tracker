@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
     { path: '', component: WelcomeComponent },
-    { path: 'training', loadChildren: './training/training.module#TrainingModule' }
+    { path: 'training', loadChildren: './training/training.module#TrainingModule', canLoad: [AuthGuard] }
 ];
 
 @NgModule({
