@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-    { path: '', component: WelcomeComponent }
+    { path: '', component: WelcomeComponent },
+    { path: 'training', loadChildren: './training/training.module#TrainingModule' }
 ];
 
 @NgModule({

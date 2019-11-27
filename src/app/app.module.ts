@@ -12,9 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from 'angularfire2';
 import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +30,8 @@ import { TrainingModule } from './training/training.module';
     SharedModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AuthModule,
-    TrainingModule
+    AngularFirestoreModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
